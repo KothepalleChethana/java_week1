@@ -1,0 +1,227 @@
+Debugging Exercise 1: Array Manipulation
+Objective: To identify and fix errors in a Java program that manipulates arrays.
+public class ArrayManipulation {
+ public static void main(String[] args) {
+ int[] numbers = {1, 2, 3, 4, 5};
+ for (int i = 0; i <= numbers.length; i++) {
+ System.out.println(numbers[i]);
+ }
+ }
+}
+EXPLANATION OF ERRORS: The error in the provided code lies in the loop condition, which 
+needs correction. The loop should continue running as long as the index is within 
+the bounds of the array. However, the current condition is i <= numbers.length, 
+which may lead to an attempt to access an index that exceeds the array's bounds. 
+To rectify this issue, it is necessary to modify the condition to i < numbers.length.
+
+THE CORRECTED CODE IS SHOWN BELOW:
+public class ArrayManipulation {
+ public static void main(String[] args) {
+ int[] numbers = {1, 2, 3, 4, 5};
+ for (int i = 0; i < numbers.length; i++) {
+ System.out.println(numbers[i]);
+ }
+ }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Debugging Exercise 2: Object-Oriented Programming
+Objective: To identify and fix errors in a Java program that demonstrates basic object-
+oriented programming principles.
+class Car {
+ private String make;
+ private String model;
+ public Car(String make, String model) {
+ this.make = make;
+ this.model = model;
+ }
+ public void start() {
+ System.out.println("Starting the car.");
+ }
+}
+public class Main {
+ public static void main(String[] args) {
+ Car car = new Car("Toyota", "Camry");
+ car.start();
+ car.stop();
+ }
+}
+ERROR IN THE CODE: The issue in the provided code is that the “Car” class does not 
+include a “stop()” method, but the Main class is attempting to invoke this 
+nonexistent method on a “Car” object. To resolve this problem, you should include 
+a “stop()” method within the “Car” class. 
+EXPLANATION OF ERRORS:
+The error in the given code is that the “Car” class does not contain a “stop()”
+method, but the Main class is making an attempt to call this non-existent method
+on a “Car” object. To address this issue, you should add a “stop()” method to the 
+“Car” class.
+
+THE CORRECTED CODE IS SHOWN BELOW:
+class Car {
+ private String make;
+ private String model;
+ public Car(String make, String model) {
+ this.make = make;
+ this.model = model;
+ }
+ public void start() {
+ System.out.println("Starting the car.");
+ }
+ public void stop() {
+ System.out.println("Stopping the car.");
+ }
+}
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Debugging Exercise 3: Exception Handling
+Objective: To identify and fix errors in a Java program that demonstrates exception 
+handling.
+public class ExceptionHandling {
+ public static void main(String[] args) {
+ int[] numbers = {1, 2, 3, 4, 5};
+ try {
+ System.out.println(numbers[10]);
+ } catch (ArrayIndexOutOfBoundsException e) {
+ System.out.println("Array index out of bounds.");
+}
+ int result = divide(10, 0);
+ System.out.println("Result: " + result);
+ }
+ public static int divide(int a, int b) {
+ return a / b;
+ }
+EXPLANATION OF ERRORS: The error in the provided code is that the divide() method is 
+dividing by zero, which will result in an ArithmeticException being thrown. 
+However, there is no try-catch block in place to handle this exception, so the 
+program will terminate with an error message. To resolve this issue, you should 
+include a try-catch block around the divide() method call to handle the 
+ArithmeticException.
+
+THE CORRECTED CODE IS SHOWN BELOW:
+public class ExceptionHandling {
+ public static void main(String[] args) {
+ int[] numbers = {1, 2, 3, 4, 5};
+ try {
+ System.out.println(numbers[10]);
+ } catch (ArrayIndexOutOfBoundsException e) {
+ System.out.println("Array index out of bounds.");
+ }
+ try {
+ int result = divide(10, 0);
+ System.out.println("Result: " + result);
+ } catch (ArithmeticException e) {
+ System.out.println("Cannot divide by zero.");
+}
+ }
+ public static int divide(int a, int b) {
+ return a / b;
+ }
+}
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Debugging Exercise 4:
+Objective: To identify and fix errors in a java program
+public class Fibonacci {
+ public static int fibonacci(int n) {
+ if (n <= 1)
+ return n;
+ else
+ return fibonacci(n-1) + fibonacci(n-2);
+ }
+ public static void main(String[] args) {
+ int n = 6;
+ int result = fibonacci(n);
+ System.out.println("The Fibonacci number at position " + n + " is: " + result);
+ }
+}
+ERROR IN THE CODE: The code aims to calculate the Fibonacci sequence. However, there is a bug in the 
+code. When the student runs this code, it will raise an error or produce incorrect 
+output. The student's task is to identify and correct the bug.
+Hint: Pay close attention to the base case and recursive calls.
+EXPLANATION OF ERRORS: The problem with the code is that it's not very efficient when 
+calculating Fibonacci numbers, especially for larger values of 'n.' It keeps redoing 
+the same calculations over and over, which makes it slow. Also, it doesn't remember previous results, so it wastes time recalculating them. If 'n' is very large, 
+the way the code works could cause a computer error. To fix this, it's better to use 
+a different approach that doesn't redo calculations and to remember results we've 
+already figured out. This will make the code faster and prevent errors when 'n' is 
+really big.
+
+THE CORRECTED CODE IS SHOWN BELOW:
+public class Fibonacci {
+ public static void main(String[] args) {
+ int n = 6; // Change the value of n to determine how many Fibonacci numbers to 
+print
+ System.out.print("Fibonacci Series of " + n + " numbers: ");
+ for (int i = 0; i < n; i++) {
+ int result = fibonacci(i);
+ System.out.print(result + " ");
+ }
+ }
+ public static int fibonacci(int n) {
+ if (n <= 1)
+ return n;
+ else
+ return fibonacci(n - 1) + fibonacci(n - 2);
+ }
+}
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Debugging Exercise 5:
+Objective: To identify and fix the errors
+import java.util.*;
+public class PrimeNumbers {
+ public static List<Integer> findPrimes(int n) {
+ List<Integer> primes = new ArrayList<>();
+for (int i = 2; i <= n; i++) {
+ boolean isPrime = true;
+ for (int j = 2; j < i; j++) {
+ if (i % j == 0) {
+ isPrime = false;
+ break;
+ }
+ }
+ if (isPrime) {
+ primes.add(i);
+ }
+ }
+ return primes;
+ }
+ public static void main(String[] args) {
+ int n = 20;
+ List<Integer> primeNumbers = findPrimes(n);
+ System.out.println("Prime numbers up to " + n + ": " + primeNumbers);
+ }
+}
+ERROR IN THE CODE: The code aims to find prime numbers up to a given limit. However, there is a bug in 
+the code. When the student runs this code, it will raise an error or produce incorrect 
+output. The student's task is to identify and correct the bug.
+Hint: Check the condition for checking prime numbers.
+EXPLANATION OF ERRORS: The bug within the provided code is the improper identification of 
+all numbers as prime. This issue arises because the isPrime flag resets to true for 
+every number in the outer loop, leading to an incorrect determination of primality. 
+To rectify this, it is essential to initialize the isPrime flag to true outside the inner 
+loop, ensuring that it retains its correct value throughout the iteration. Moreover, adjusting the range of the inner loop to iterate up to the square root of the current 
+number, as opposed to its previous value, will optimize the prime-checking 
+process. This adjustment reduces the number of unnecessary divisions, improving 
+the code's efficiency and accuracy in identifying prime numbers.
+
+THE CORRECTED CODE IS SHOWN BELOW:
+import java.util.*;
+public class PrimeNumbers {
+ public static List<Integer> findPrimes(int n) {
+ List<Integer> primes = new ArrayList<>();
+ for (int i = 2; i <= n; i++) {
+ boolean isPrime = true;
+ for (int j = 2; j <= Math.sqrt(i); j++) { // Adjusted the range
+ if (i % j == 0) {
+ isPrime = false;
+ break;
+ }
+ }
+ if (isPrime) {
+ primes.add(i);
+ }
+ } return primes;
+ }
+public static void main(String[] args) {
+ int n = 20;
+ List<Integer> primeNumbers = findPrimes(n);
+ System.out.println("Prime numbers up to " + n + ": " + primeNumbers);
+ }
+}
